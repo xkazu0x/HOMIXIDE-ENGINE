@@ -50,7 +50,7 @@ Shader* CreateShaderProgram(std::string vertex_filepath, std::string fragment_fi
 		vertex_code = vert_shader_stream.str();
 		fragment_code = frag_shader_stream.str();
 	}
-	catch (std::ifstream::failure& e) {
+	catch (std::ifstream::failure e) {
 		std::cerr << "ERROR::SHADER::FILE_NOT_SUCCESSFULLY_READ\n";
 		return nullptr;
 	}

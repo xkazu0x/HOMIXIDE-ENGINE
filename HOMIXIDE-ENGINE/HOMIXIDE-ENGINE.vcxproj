@@ -143,7 +143,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\game\grid.cpp" />
+    <ClCompile Include="src\game\maze.cpp" />
     <ClCompile Include="src\game\camera.cpp" />
     <ClCompile Include="src\window\events.cpp" />
     <ClCompile Include="src\graphics\shader.cpp" />
@@ -155,7 +155,7 @@
     <ClCompile Include="src\graphics\mesh.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\game\grid.h" />
+    <ClInclude Include="src\game\maze.h" />
     <ClInclude Include="src\game\camera.h" />
     <ClInclude Include="src\window\events.h" />
     <ClInclude Include="src\graphics\shader.h" />
@@ -167,6 +167,12 @@
   <ItemGroup>
     <None Include="res\shaders\shader.frag" />
     <None Include="res\shaders\shader.vert" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\textures\concrete-floor.png" />
+    <Image Include="res\textures\concrete-floor0.png" />
+    <Image Include="res\textures\concrete-wall.png" />
+    <Image Include="res\textures\concrete.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

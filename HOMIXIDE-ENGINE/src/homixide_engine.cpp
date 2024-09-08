@@ -4,10 +4,9 @@
 #include "graphics/shader.h"
 #include "graphics/mesh.h"
 #include "game/camera.h"
-#include "game/grid.h"
+#include "game/maze.h"
 
 #include <glad/glad.h>
-#include <glm/ext.hpp>
 
 namespace Homixide {
 	Shader* m_shader = nullptr;
@@ -17,7 +16,7 @@ namespace Homixide {
 	float m_camx = 0.0f;
 	float m_camy = 0.0f;
 
-	Grid* m_grid = nullptr;
+	Maze* m_maze = nullptr;
 
 	void Run() {
 		Window::Initialize(1920 / 2, 1080 / 2, "HOMIXIDE ENGINE", false, false);
@@ -25,17 +24,20 @@ namespace Homixide {
 
 		m_shader = CreateShaderProgram("res/shaders/shader.vert", "res/shaders/shader.frag");
 
-		m_camera = new Camera(glm::vec3(0.0f, 1.0f, 2.0f), glm::radians(45.0f));
-		m_grid = new Grid(8, 8);
+		m_camera = new Camera(glm::vec3(0.0f, 1.0f, 2.0f), glm::radians(80.0f));
+		m_maze = new Maze(8, 8);
 
 		glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
 
-		float last_time = glfwGetTime();
+		glEnable(GL_DEPTH_TEST);
+		glEnable(GL_CULL_FACE);
+
+		double last_time = glfwGetTime();
+		double now = 0.0;
 		float delta = 0.0f;
-		float now = 0.0f;
 		while (Window::WindowIsOpen()) {
 			now = glfwGetTime();
-			delta = last_time - now;
+			delta = (float)(last_time - now);
 			last_time = now;
 
 			Events::PollEvents();
@@ -83,18 +85,18 @@ namespace Homixide {
 			}
 			
 			// Render
-			glClear(GL_COLOR_BUFFER_BIT);
+			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 			m_shader->Use();
 			m_shader->SetUniformMatrix("view", m_camera->GetView());
 			m_shader->SetUniformMatrix("projection", m_camera->GetProjection());
 
-			m_grid->Draw(m_shader);
+			m_maze->Draw(m_shader);
 
 			Window::SwapBuffers();
 		}
 		
-		delete m_grid;
+		delete m_maze;
 		delete m_camera;
 		delete m_shader;
 

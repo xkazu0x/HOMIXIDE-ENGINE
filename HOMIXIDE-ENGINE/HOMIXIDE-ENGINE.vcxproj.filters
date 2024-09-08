@@ -39,7 +39,7 @@
     <ClCompile Include="src\graphics\mesh.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\game\grid.cpp">
+    <ClCompile Include="src\game\maze.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\graphics\texture.cpp">
@@ -65,7 +65,7 @@
     <ClInclude Include="src\graphics\mesh.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\game\grid.h">
+    <ClInclude Include="src\game\maze.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\graphics\texture.h">
@@ -75,5 +75,19 @@
   <ItemGroup>
     <None Include="res\shaders\shader.vert" />
     <None Include="res\shaders\shader.frag" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\textures\concrete.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\concrete-wall.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\concrete-floor.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\concrete-floor0.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>
